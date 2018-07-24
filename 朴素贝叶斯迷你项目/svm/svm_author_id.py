@@ -18,7 +18,15 @@ from email_preprocess import preprocess
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
+from sklearn.svm import SVC
 
+slv = SVC(kernel='linear')
+t0 = time()
+slv.fit(features_train,labels_train)
+print('train time:',round(time() - t0,3),'s')
+t0 = time()
+print(slv.score(features_test,labels_test))
+print('train time:',round(time() - t0,3),'s')
 
 
 
